@@ -1,0 +1,28 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int time = sc.nextInt();
+        int count[] = new int[100];
+        //get the NO-OUTPUT when the value of array has only given by 26
+        int ALLlength = 0;
+        
+        for (int i=0;i<=time;i++){
+        	String test = sc.nextLine();
+        	ALLlength += test.length();
+        	test = test.toUpperCase();
+        	
+        	for (int j=0;j<test.length();j++){
+        		if (test.charAt(j) >= 'A' && test.charAt(j) <= 'Z')
+        			count[(int)test.charAt(j)]+=1;
+        	}
+        }
+        
+        while (ALLlength-- > 1){
+        	for (int k='A';k<='Z';k++){
+        		if (count[k] == ALLlength)
+        			System.out.println((char)k + " " + ALLlength);
+        	}
+        }
+    }
+};

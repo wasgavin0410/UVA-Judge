@@ -1,0 +1,38 @@
+//To understand how to combine both functions "String.valueOf(int)"
+//and "Integer.parseInt(Stirng, 16)" to change a hex number to a decimal number
+//After that, convert to binary to count how much does "1" exists.
+
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        // use Integer function "toBinaryString(int i)"
+		Scanner sc = new Scanner(System.in);
+		int count = sc.nextInt();
+		
+		for (int i=0;i<count;i++){
+			int num = sc.nextInt();
+			System.out.print(countDecimal(num)+" ");
+			System.out.println(countHex(num));
+		}
+    }
+    
+    public static int countDecimal(int num){
+    	String toBinary = Integer.toBinaryString(num);
+    	int countOne = 0;
+    	
+    	for (int i=0;i<toBinary.length();i++){
+    		if (toBinary.charAt(i) == '1')
+    			countOne++;
+    	}
+    	
+    	return countOne;
+    }
+    
+    public static int countHex(int num){
+    	String pass = String.valueOf(num);
+    	int change = Integer.parseInt(pass, 16);
+    	//change a hex num to a decimal num
+    	int countOne = countDecimal(change);
+    	return countOne;
+    }
+};	
