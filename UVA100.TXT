@@ -1,0 +1,33 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int num1, num2;
+        
+        while(sc.hasNext()){
+        	num1 = sc.nextInt();
+        	num2 = sc.nextInt();
+        	
+        	int min = Math.min(num1,num2);
+        	int max = Math.max(num1, num2);
+        	
+        	int best = 0;
+        	
+        	for (int i=min;i<=max;i++){
+        		int cycle = 1;
+        		int j = i;
+        		while (j!=1){
+        			if (j%2==0)	j/=2;
+        			else	j = j*3 +1;
+        			cycle++;
+        		}
+        		
+        		if (cycle > best) best = cycle;
+        	}
+        	
+        	System.out.println (num1 + " " + num2 + " " + best);
+        	
+        	
+        }
+    }
+};
