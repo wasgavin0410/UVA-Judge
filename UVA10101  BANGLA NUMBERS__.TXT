@@ -1,0 +1,63 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        //Bangla numbers use "KUTI" , "LAKH", "HAJAR", "SHATA" to mean
+        // "10,000,000", "100,000", "1,000", "100", correspondly.
+        //try to insert them into the input numbers
+        //QUICK REMINDER: mentioned numbers are not BINARY number
+        
+        //這題毛很多，要把很多測資會出現的雞巴情形考慮到，如測資為0的情況、還有每段開頭要用%4d
+        
+          Scanner sc = new Scanner(System.in);
+			long num = 0;
+			int count = 1;
+			
+          while(sc.hasNext()){
+          		num = sc.nextLong();
+          		
+          		System.out.printf("%4d." , count);
+          		
+          		if (num!=0)	recursive(num);
+          		else	System.out.print(" 0");
+          		System.out.println();
+          		
+          		count++;
+          	
+          }	
+    }
+    
+    static void recursive(long num){
+    
+    			if (num/10000000>99){
+    				//分成兩段來進行recursive()
+    				//第一段為10000000前面的數字，第二段為10000000後面的數字，中間加入一個"kuti"銜接
+    				long afterKuti = num/10000000;
+    				recursive(afterKuti);
+    				System.out.print(" kuti");
+    				recursive(num%10000000);
+    			}
+          		
+          		else{
+          			if (num/10000000 > 0){
+	          			System.out.printf(" %d kuti", num/10000000);
+	          			num%=10000000;
+	          		}
+	          		if (num/100000>0){
+	          			System.out.printf(" %d lakh", num/100000);
+	          			num%=100000;
+	          		}
+	          		
+	          		if (num/1000>0){
+	          			System.out.printf(" %d hajar", num/1000);
+	          			num%=1000;
+	          		}
+	          		
+	          		if (num/100>0){
+	          			System.out.printf(" %d shata", num/100);
+	          			num%=100;
+	          		}
+	          		if (num!=0)	System.out.printf(" %d", num);
+	          	
+          		}
+    }
+};

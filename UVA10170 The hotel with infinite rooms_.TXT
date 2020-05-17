@@ -1,0 +1,29 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+    	//3 members of a single group stay for 3 nights
+    	//4 members of a single group stay 4 nights and so on
+    	//each group wont check in the hotel until the previous group has being checked out
+    	//Our task is to discover that how many members are still remain when it comes to the specific day "D"
+    	
+    	//Initial members of a group  : 3
+    	//The day "D": 14
+	    //14-3 > 0
+		//14-3-4 > 0
+		//14-3-4-5 > 0
+		//14-3-4-5-6 < 0
+
+        Scanner sc = new Scanner(System.in);
+        long firstDayPeople, days;
+        
+        while(sc.hasNext()){
+        	firstDayPeople = sc.nextLong();
+        	days = sc.nextLong();
+        	while(days>0){
+        		days -= firstDayPeople;
+        		firstDayPeople++;
+        	}
+        	System.out.println(firstDayPeople-1);
+        }
+    }
+};
