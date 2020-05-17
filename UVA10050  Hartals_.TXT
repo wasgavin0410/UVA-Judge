@@ -1,0 +1,49 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+    	//Approach: build a table to instance a virtual calander
+    	//write down the days that would be screwed up
+    	//and dont forget Friday and Saturday need not to count
+    	//Finally, combine raws of boolean into one alter boolean table
+    	//therefore you could count the number of days which have been screwed up.
+    
+        Scanner sc = new Scanner(System.in);
+        int test = sc.nextInt();
+        
+        while(test-- > 0){
+        	int days = sc.nextInt();
+        	int party = sc.nextInt();
+        	boolean[][] table = new boolean[days][party];
+        	//default of boolean is false
+        	
+        	for (int i=0;i<party;i++){
+        	
+        		int fuckUp = sc.nextInt();
+        		for (int k=0;k<days;k++){
+        			//REMINDER: dont forget to add an "ONE" to k!
+        			if ((k+1) % fuckUp == 0 && !(k%7 == 5 || k%7 == 6))
+        				table[k][i] = true;
+        		}
+        		
+        	}
+        	
+        	boolean[] finalTable = new boolean[days];
+        	for (int i=0;i<party;i++){
+        		for (int k=0;k<days;k++){
+        			if (table[k][i])
+        				finalTable[k] = true;
+        		}
+        	}
+        	
+        	int daysFuckedUp = 0;
+        	for (int i=0;i<days;i++){
+        		if (finalTable[i])
+        			daysFuckedUp++;
+        	}
+        	
+        	System.out.println(daysFuckedUp);
+        	
+        	
+        }
+    }
+};

@@ -1,0 +1,23 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+    
+    // careful! the first number in each line's head is not one of Vito's family,
+    // it's just a number that tell app how many families are going to input
+        Scanner sc = new Scanner(System.in);
+        int time = sc.nextInt();
+        
+        while(time-- > 0){
+        	int families = sc.nextInt();
+        	int[] arr = new int[families];
+        	for (int i=0;i<families;i++)	arr[i]=sc.nextInt();
+        	Arrays.sort(arr);
+        	
+        	int walk = 0;
+        	for (int num : arr){
+        		walk += Math.abs(arr[families/2]-num);
+        	}
+        	System.out.println(walk);
+        }
+    }
+};
