@@ -1,0 +1,28 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+    	//use the function Integer.parseInt(String s, 2) to convert a binary number into a decimal number
+    	//then, do the GCD to understand if you need love! 
+        Scanner sc = new Scanner(System.in);
+        int num1, num2;
+        int count = 0;
+        int run = sc.nextInt();
+        
+        
+        while(run-- > 0){
+        	String str1 = sc.next(), str2 = sc.next();
+        	num1 = Integer.parseInt(str1, 2);
+        	num2 = Integer.parseInt(str2, 2);
+        	count++;
+        	
+        	if (GCD(num1, num2) != 1)	System.out.printf("Pair #%d: All you need is love!\r\n", count);
+        	else	System.out.printf("Pair #%d: Love is not all you need!\r\n", count);
+        }
+    }
+    
+    static int GCD(int m, int n){
+    	if (n==0)	return m;
+    	else	return GCD(n, m%n);
+     }
+     
+};

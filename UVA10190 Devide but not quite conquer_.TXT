@@ -1,0 +1,39 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Queue<Long> Q = new LinkedList<>();
+        //Queue is a implement of LinkedList however stack refers itself
+        //REMINDER: consider the situation of one of the input numbers is "0" so you should output BORING!
+        
+        while(sc.hasNext()){
+        	long num1 = sc.nextLong(), num2 = sc.nextLong();
+        	long recorder = num1;
+        	Q.add(num1);
+        	
+        	 if (num1 == 1 || num2 == 1){
+        	 	System.out.println("Boring!");
+        	 	Q.clear();
+        	 }else{
+	        	 while(num1 != 1){
+	        	 	if (num1 % num2 == 0){
+		        	 	Q.add(num1/num2);
+		        	 	num1 /= num2;
+		        	 }else{
+		        	 	System.out.println("Boring!");
+		        	 	Q.clear();
+		        	 	break;
+		        	 }
+	        	 }
+        	 }
+        	 
+        	 while (!Q.isEmpty()){
+        	 	//Queue uses the method "isEmpty()" and Stack simply uses "empty()"
+        	 	if (Q.peek() == recorder)	System.out.print(Q.remove());
+        	 	else	System.out.printf (" %d", Q.remove());
+        	 	
+        	 	if (Q.isEmpty())	System.out.println();
+        	 }
+        }
+    }
+};
