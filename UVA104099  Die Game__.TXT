@@ -1,0 +1,79 @@
+
+
+
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        while(sc.hasNext()){
+        	
+        	int[] dice = {1, 6, 2, 3, 5, 4};
+      		  //順序    上、下、北、西、南、東，兩個相對面的總合會相等為7
+      		  //注意，往北滾的骰子是南面朝上，往南滾北面朝上；以此類推剩餘兩者
+        	int time = sc.nextInt();
+        	
+        	if (time!=0){
+        		for (int i=0;i<time;i++){
+	        		String way = sc.next();
+	        		if (way.equals("north"))	dice = toNorth(dice);
+	        		else if (way.equals("south"))	dice = toSouth(dice);
+	        		else if (way.equals("west"))		dice = toWest(dice);
+	        		else if (way.equals("east"))		dice = toEast(dice);
+	        	}
+        	}else	return;
+        	
+        	System.out.println(dice[0]);
+        }
+    }
+    
+    static int[] toNorth(int[] dice){
+    	int temp = dice[0];
+    	
+    	dice[0] = dice[4];
+    	dice[4] = dice[1];
+    	dice[1] = dice[2];
+    	dice[2] = temp;
+    	
+    	return dice;
+    	
+    	//數字更換順序：上換成南、南換成下、下換成北、北換成上
+    }
+    
+    static int[] toSouth(int[] dice){
+    	int temp = dice[0];
+    	
+    	dice[0] = dice[2];
+    	dice[2] = dice[1];
+    	dice[1] = dice[4];
+    	dice[4] = temp;
+    	
+    	return dice;
+    	
+    	//上換北、北換下、下換南、南換上
+    }
+    
+    static int[] toWest(int[] dice){
+    	int temp = dice[0];
+    	
+    	dice[0] = dice[5];
+    	dice[5] = dice[1];
+    	dice[1] = dice[3];
+    	dice[3] = temp;
+    	
+    	return dice;
+    	//上換東、東換下、下換西、西換上
+    }
+    
+    static int[] toEast(int[] dice){
+    	int temp = dice[0];
+    	
+    	dice[0] = dice[3];
+    	dice[3] = dice[1];
+    	dice[1] = dice[5];
+    	dice[5] = temp;
+    	
+    	return dice;
+    	//上換西、西換下、下換東、東換上
+    }
+};

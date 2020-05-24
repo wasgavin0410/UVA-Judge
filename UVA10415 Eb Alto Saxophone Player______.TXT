@@ -1,0 +1,127 @@
+
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+    
+    	//將薩克斯風的各個手指按下的地方化作為1，沒有按下的地方作為0
+    	//本題要做的是將每一次的字串跟上一次所執行的字串進行一一比較，並將每一次0->1的過程記錄在陣列裡面
+        Scanner sc = new Scanner(System.in);
+        int time = sc.nextInt();
+        String 
+        c = "0111001111",
+        d = "0111001110",
+        e = "0111001100",
+        f = "0111001000",
+        g = "0111000000",
+        a = "0110000000",
+        b = "0100000000",
+        upC = "0010000000",
+        upD = "1111001110",
+        upE = "1111001100",
+        upF = "1111001000",
+        upG = "1111000000",
+        upA = "1110000000",
+        upB = "1100000000";
+        
+        while(time-- > 0){
+        	int[] arr = new int[10];
+        	String previous = "0000000000";
+        	//要放在迴圈裡面宣告，不這麼做會在進行下一行的時候previous沒有歸零
+        	String str = sc.next();
+        	
+        	for (int i=0;i<str.length();i++){
+        		switch(str.charAt(i)){
+        			case 'c':
+        				comparing(c, previous, arr);
+        				previous = c;
+        				break;
+        				
+        			case 'd':
+        				comparing(d, previous, arr);
+        				previous = d;
+        				break;
+        				
+        			case 'e':
+        				comparing(e, previous, arr);
+        				previous = e;
+        				break;
+        				
+        			case 'f':
+        				comparing(f, previous, arr);
+        				previous = f;
+        				break;
+        				
+        			case 'g':
+        				comparing(g, previous, arr);
+        				previous = g;
+        				break;
+        				
+        			case 'a':
+        				comparing(a, previous, arr);
+        				previous = a;
+        				break;
+        				
+        			case 'b':
+        				comparing(b, previous, arr);
+        				previous = b;
+        				break;
+        				
+        			case 'C':
+        				comparing(upC, previous, arr);
+        				previous = upC;
+        				break;
+        				
+        			case 'D':
+        				comparing(upD, previous, arr);
+        				previous = upD;
+        				break;
+        				
+        			case 'E':
+        				comparing(upE, previous, arr);
+        				previous = upE;
+        				break;
+        				
+        			case 'F':
+        				comparing(upF, previous, arr);
+        				previous = upF;
+        				break;
+        				
+        			case 'G':
+        				comparing(upG, previous, arr);
+        				previous = upG;
+        				break;
+        				
+        			case 'A':
+        				comparing(upA, previous, arr);
+        				previous = upA;
+        				break;
+        				
+        			case 'B':
+        				comparing(upB, previous, arr);
+        				previous = upB;
+        				break;
+        				
+        			default:
+        				System.out.println();
+        				break;
+        		}
+        		
+        	}	
+        	
+        	for (int k=0;k<arr.length-1;k++)	System.out.printf("%d ", arr[k]);
+        	System.out.println(arr[9]);
+        }
+    }
+   
+   static int[] comparing(String now, String previous, int[] arr){
+  		for (int k=0;k<10;k++){
+        		if (now.charAt(k)=='1' && previous.charAt(k)=='0')	
+        			arr[k]+=1;
+        		}
+      
+        	return arr;
+   }
+    
+
+};
+

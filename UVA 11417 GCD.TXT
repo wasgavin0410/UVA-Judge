@@ -1,0 +1,36 @@
+import java.util.*;
+public class main{
+    public static void main(String[] args) {
+    
+    	//input run times = N
+    	
+    	//i = 1~ N-1
+    	//k   = i+1 ~ N
+    	//put these two parameters into GCD(first ,sec)
+        Scanner sc = new Scanner(System.in);
+        int result = 0;
+        
+        while (sc.hasNext()){
+        	int N = sc.nextInt();
+        	if (N==0)	break;
+        	else{
+	     		
+	     		result = 0;
+	     		
+	     		for (int i=1;i<N;i++){
+	     			for (int k=i+1;k<N+1;k++){
+	     				result += GCD(i,k);
+	     			}
+	     		}
+     		}
+     		
+     		System.out.println(result);
+        }
+        
+    }
+    
+    static int GCD(int a, int b){
+    	if (a % b == 0)		return b;
+    	else 	return GCD(b,a%b); 
+    }
+};
